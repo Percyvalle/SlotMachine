@@ -10,7 +10,7 @@ RollState::~RollState() {
 
 State* RollState::handlerInput(SlotMachine& _slotMachine) {
 
-    _slotMachine.setTextState("Roll");
+    _slotMachine.setTextState("Rolling");
     if (Mouse::isButtonPressed(Mouse::Left)) {
         if (_slotMachine.getStopButton()->getIsHover() && _slotMachine.getTimer().getElapsedTime().asSeconds() > 0.5) {
             _slotMachine.getRollMachine()->stop();

@@ -54,6 +54,7 @@ private:
 	Button* start_button;
 	Button* stop_button;
 	RenderWindow *m_mainWindow;
+	ContextSettings m_settings;
 	RollMachine* m_roll_machine;
 	Event *m_eventHandler;
 	Clock m_timer;

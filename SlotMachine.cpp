@@ -6,7 +6,9 @@ using namespace sf;
 
 SlotMachine::SlotMachine()
 {
-    m_mainWindow = new RenderWindow(VideoMode(880, 420), "SlotMachine", Style::Close);
+    m_settings.antialiasingLevel = 8;
+
+    m_mainWindow = new RenderWindow(VideoMode(880, 420), "SlotMachine", Style::Close, m_settings);
     m_mainWindow->setFramerateLimit(30);
 
     start_button = new Button(Vector2f(680, 50), Vector2f(150, 55), Color::Black, "Start", m_mainWindow);
