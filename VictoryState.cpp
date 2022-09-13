@@ -13,6 +13,7 @@ State* VictoryState::handlerInput(SlotMachine& _slotMachine) {
     _slotMachine.setTextState("Victory");
 
     _slotMachine.plusResult(_slotMachine.getRollMachine()->getResult());
+    _slotMachine.setTextWin(_slotMachine.getRollMachine()->getResult());
     _slotMachine.getRollMachine()->restart();
     _slotMachine.restartTimer();
 

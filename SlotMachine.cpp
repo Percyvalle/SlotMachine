@@ -10,27 +10,12 @@ SlotMachine::SlotMachine()
 
     m_mainWindow = new RenderWindow(VideoMode(880, 420), "SlotMachine", Style::Close, m_settings);
     m_mainWindow->setFramerateLimit(30);
-
-    start_button = new Button(Vector2f(680, 50), Vector2f(150, 55), Color::Black, "Start", m_mainWindow);
-    stop_button = new Button(Vector2f(680, 342), Vector2f(150, 55), Color::Black, "Stop", m_mainWindow);
     
     m_eventHandler = new Event;
     m_roll_machine = new RollMachine(m_mainWindow);
     m_state = new WaitingState;
 
-    font.loadFromFile("pico-8.ttf");
-
-    text_result.setFont(font);
-    text_result.setPosition(Vector2f(680, 300));
-    text_result.setStyle(sf::Text::Bold);
-    text_result.setCharacterSize(18);
-    text_result.setFillColor(Color::Black);
-
-    text_state.setFont(font);
-    text_state.setPosition(Vector2f(40, 20));
-    text_state.setStyle(sf::Text::Bold);
-    text_state.setCharacterSize(18);
-    text_state.setFillColor(Color::Black);
+    initUI();
 }
 
 SlotMachine::~SlotMachine()
@@ -76,8 +61,34 @@ void SlotMachine::run() {
         text_result.setString("Result: " + std::to_string(result));
         m_mainWindow->draw(text_result);
         m_mainWindow->draw(text_state);
+        m_mainWindow->draw(text_win);
         m_mainWindow->display();
     }
+}
+
+void SlotMachine::initUI() {
+    start_button = new Button(Vector2f(680, 50), Vector2f(150, 55), Color::Black, "Start", m_mainWindow);
+    stop_button = new Button(Vector2f(680, 342), Vector2f(150, 55), Color::Black, "Stop", m_mainWindow);
+
+    font.loadFromFile("pico-8.ttf");
+
+    text_result.setFont(font);
+    text_result.setPosition(Vector2f(680, 300));
+    text_result.setStyle(sf::Text::Bold);
+    text_result.setCharacterSize(18);
+    text_result.setFillColor(Color::Black);
+
+    text_win.setFont(font);
+    text_win.setPosition(Vector2f(680, 270));
+    text_win.setStyle(sf::Text::Bold);
+    text_win.setCharacterSize(18);
+    text_win.setFillColor(Color::Black);
+
+    text_state.setFont(font);
+    text_state.setPosition(Vector2f(40, 20));
+    text_state.setStyle(sf::Text::Bold);
+    text_state.setCharacterSize(18);
+    text_state.setFillColor(Color::Black);
 }
 
 void SlotMachine::handlerInput() {

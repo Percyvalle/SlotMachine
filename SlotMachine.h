@@ -28,6 +28,11 @@ public:
 	void run();
 
 	/*!
+	 *Инициализация объектов в основном окне
+	 */
+	void initUI();
+
+	/*!
 	 *Обработка смены состояний
 	 */
 	void handlerInput();
@@ -49,6 +54,7 @@ public:
 	*/
 	void plusResult(int _result) { result += _result; }
 	void setTextState(String _state) { text_state.setString("State: " + _state); }
+	void setTextWin(int _win_result) { text_win.setString("Win: " + std::to_string(_win_result)); }
 
 private:
 	Button* start_button;
@@ -63,6 +69,7 @@ private:
 	Font font;
 	Text text_state;
 	Text text_result;
+	Text text_win;
 	int result = 0;
 
 	std::vector<Button*> m_button_list;
